@@ -1,0 +1,1 @@
+This code includes HTML for structure, CSS for basic styling, and JavaScript for the stopwatch functionality. The setInterval function is used to update the stopwatch every second. The startStopwatch and resetStopwatch functions control the stopwatch's behavior, and the updateDisplay function formats and displays the time on the webpage.
