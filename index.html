@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Stopwatch</title>
+  <script src="https://kit.fontawesome.com/859082229d.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 50px;
+    }
+
+    #display {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    #controls {
+      display: flex;
+      justify-content: center;
+    }
+
+    button {
+      font-size: 1em;
+      margin: 0 10px;
+      padding: 5px 10px;
+    }
+    .copyright{
+      width: 100%;
+      color: #ffff;
+      text-align: center;
+      padding: 25px 0;
+      background: #262626;
+      font-size: 18px;
+      font-weight:300;
+      margin-top:10px;
+      margin-bottom:0;
+      width: 100%;
+  }
+  .copyright i{
+      color:red;
+  }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Stopwatch</h1>
+  <div id="display">0:00:00</div>
+  <div id="controls">
+    <button onclick="startStop()">Start/Stop</button>
+    <button onclick="reset()">Reset</button>
+  </div>
+
+  <script>
+    let isRunning = false;
+    let elapsedTime = 0;
+    let intervalId;
+
+    function startStop() {
+      if (isRunning) {
+        // Stop the stopwatch
+        clearInterval(intervalId);
+      } else {
+        // Start the stopwatch
+        intervalId = setInterval(updateDisplay, 1000);
+      }
+      isRunning = !isRunning;
+    }
+
+    function updateDisplay() {
+      elapsedTime++;
+      const hours = Math.floor(elapsedTime / 3600);
+      const minutes = Math.floor((elapsedTime % 3600) / 60);
+      const seconds = elapsedTime % 60;
+
+      document.getElementById('display').textContent =
+        `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+    function reset() {
+      // Reset the stopwatch
+      clearInterval(intervalId);
+      isRunning = false;
+      elapsedTime = 0;
+      document.getElementById('display').textContent = '0:00:00';
+    }
+  </script>
+</body>
+<div class="copyright">
+  <p>Copyright &#169 2024 Made With <i class="fa-solid fa-heart"></i> by Thomas Oirere</p>
+</div>
+</html>
